@@ -2,13 +2,16 @@
 ## Project: The text classification of products cosmetics 
 ### General info
 
-The project concerns the text classification and analysis of makeup products. The dataset comes from http://makeup-api.herokuapp.com/ and has been obtained from my previous project at [Create dataset with API](https://github.com/aniass/Create-dataset-with-API)
+The project concerns the multi-class text classification and analysis of makeup products. The dataset comes from http://makeup-api.herokuapp.com/ and has been obtained from my previous project at [Create dataset with API](https://github.com/aniass/Create-dataset-with-API).
+
+The multi-class text classification has been applied to categorization of the description of makeup products by using python, nltk library and Machine Learning algorithms.
+
 
 ### Analysis includes:
 * analysis of makeup products
-* text classification with nltk library and Machine Learning algorithms
+* multi-class text classification with nltk library and Machine Learning algorithms
 
-The analysis is created with:
+The project is created with:
 
 * Python 3
-* library: nltk, pandas, numpy.
+* libraries: nltk, sklearn, pandas, numpy, seaborn.
