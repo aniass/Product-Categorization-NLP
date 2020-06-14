@@ -1,5 +1,5 @@
 
-## Project: The Document Classification with NLP
+## The Document Classification with NLP
 
 ### Multi-Class Text Clasification of make-up cosmetics
  
@@ -7,12 +7,11 @@
 
 The project concerns document classification using natural language processing. The analysis includes the multi-class text classification, Topic Modeling, creation Word2vec model and previous analysis of makeup products.
 
-The multi-class text classification has been applied to the categorization of description of makeup products by using python, NLTK library and Machine Learning algorithms.
-The Topic modeling includes LDA analysis from our dataset. The analysis of makeup products includes data exploration, data aggregation and cleaning data. 
+The multi-class text classification has been applied to the categorization of description of makeup products by using python, NLTK library and Machine Learning algorithms. The Topic modeling includes LDA analysis from our dataset. The analysis of makeup products includes data exploration, data aggregation and cleaning data. 
 
 The dataset comes from http://makeup-api.herokuapp.com/ and has been obtained from my previous project at [Create dataset with API](https://github.com/aniass/Create-dataset-with-API).
 
-### Analysis includes:
+### Project includes:
 * analysis of makeup products
 * multi-class text classification with nltk library and Machine Learning algorithms
 * LDA - Topic modeling with Gensim library
@@ -20,5 +19,5 @@ The dataset comes from http://makeup-api.herokuapp.com/ and has been obtained fr
 
 ### The project is created with:
 
-* Python 3
+* Python 3.6
 * libraries: nltk, gensim, sklearn, pandas, numpy, seaborn, pyLDAvis.
