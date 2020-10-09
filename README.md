@@ -2,7 +2,7 @@
  
 ### General info
 
-The project includes multi-class text classification, Topic Modeling (with LDA analysis from our dataset), creation Word2vec model and EDA analysis of makeup products (data exploration, data aggregation and cleaning data).
+The project includes multi-class text classification, Topic Modeling (with LDA analysis), creation Word2vec model and EDA analysis (data exploration, data aggregation and cleaning data).
 
 The dataset comes from http://makeup-api.herokuapp.com/ and has been obtained from my previous project at [Extracting Data using API](https://github.com/aniass/Extracting-data-using-API).
 
