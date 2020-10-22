@@ -16,7 +16,7 @@ The aim of the project is multi-class text classification to make-up products ba
 * Multi-class text classification - ***Text_analysis.ipynb***
 * LDA - Topic modeling - ***LDA_Topic_modeling.ipynb***
 * Word2vec model - ***Word2vec.ipynb***
-* Text classification with Doc2vec model
+* Text classification with Doc2vec model -***Doc2vec.ipynb***
 
 ### The project is created with:
 
