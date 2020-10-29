@@ -2,7 +2,7 @@
  
 ### General info
 
-The project includes multi-class text classification with ML algorithms, text classification with Doc2vec model, creation Word2vec model, Topic Modeling (with LDA analysis) and EDA analysis (data exploration, data aggregation and cleaning data).
+The project includes multi-class text classification with Machine Learning and Deep Learning algorithms, text classification with Doc2vec model, creation Word2vec model, Topic Modeling (with LDA analysis) and EDA analysis (data exploration, data aggregation and cleaning data).
 
 The dataset comes from http://makeup-api.herokuapp.com/ and has been obtained from my previous project at [Extracting Data using API](https://github.com/aniass/Extracting-data-using-API).
 
@@ -17,11 +17,12 @@ The aim of the project is multi-class text classification to make-up products ba
 * LDA - Topic modeling - ***LDA_Topic_modeling.ipynb***
 * Word2vec model - ***Word2vec.ipynb***
 * Text classification with Doc2vec model -***Doc2vec.ipynb***
+* Text classification with Neural Network and Convolutional Neural Netwok (CNN) models - ***Text_nn.ipynb***
 
 ### The project is created with:
 
 * Python 3.6
-* libraries: nltk, gensim, sklearn, pandas, numpy, seaborn, pyLDAvis.
+* libraries: NLTK, Gensim, Keras, Sklearn, Pandas, Numpy, Seaborn, pyLDAvis.
 
 ### Running the project:
 
