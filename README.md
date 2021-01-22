@@ -1,4 +1,4 @@
-## Multi-Class Text Classification for products based on their description
+## Multi-Class Text Classification of products based on their description
  
 ### General info
 
