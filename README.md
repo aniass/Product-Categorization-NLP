@@ -28,22 +28,22 @@ From our experiments we can see that the tested models give a overall high accur
 
 Model | Embeddings | Accuracy
 ------------ | ------------- | ------------- 
-Logistic Regression | BOW +TF-IDF | 0.91
-SVM | BOW +TF-IDF | 0.93
-Naive Bayes | BOW +TF-IDF | 0.90
-Random Forest | BOW +TF-IDF | 0.91
-Gradient Boosting | BOW +TF-IDF | 0.91
+**CNN** | Word embedding | **0.93**
+MLP| Word embedding  | 0.93
+SVM | Doc2vec (DBOW)| 0.93
+SVM| BOW +TF-IDF  | 0.93
 Logistic Regression | Doc2vec (DBOW) | 0.91
-Logistic Regression | Doc2vec (DM) | 0.89
-SVM | Doc2vec (DBOW) | 0.93
-MLP| Word embedding | 0.93
-CNN | Word embedding | 0.93
+Gradient Boosting | BOW +TF-IDF | 0.91
+Logistic Regression | BOW +TF-IDF  | 0.91
+Random Forest| BOW +TF-IDF | 0.91
+Naive Bayes | BOW +TF-IDF | 0.90
+Logistic Regression | Doc2vec (DM)  | 0.89
 
 
 #### The project is created with:
 
 * Python 3.6
-* libraries: NLTK, Gensim, Keras, Scikit-learn, Pandas, Numpy, Seaborn, pyLDAvis.
+* libraries: NLTK, gensim, keras, scikit-learn, pandas, numpy, seaborn, pyLDAvis.
 
 #### Running the project:
 
