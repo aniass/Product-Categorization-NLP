@@ -12,12 +12,12 @@ The aim of the project is multi-class text classification to make-up products ba
 
 ### Project contains:
 * Multi-class text classification with ML algorithms- ***Text_analysis.ipynb***
-* Text classification with Doc2vec model -***Doc2vec.ipynb***
 * Text classification with MLP and Convolutional Neural Netwok (CNN) models - ***Text_nn.ipynb***
-* EDA analysis - ***Products_analysis.ipynb***
-* LDA - Topic modeling - ***LDA_Topic_modeling.ipynb***
+* Text classification with Doc2vec model -***Doc2vec.ipynb***
 * Word2vec model - ***Word2vec.ipynb***
-* Python scripts to clean data and use text model - **clean_data.py, text_model.py**
+* LDA - Topic modeling - ***LDA_Topic_modeling.ipynb***
+* EDA analysis - ***Products_analysis.ipynb***
+* Python scripts to clean data and ML model - **clean_data.py, text_model.py**
 
 ### Summary
 
