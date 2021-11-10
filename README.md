@@ -30,7 +30,7 @@ From our experiments we can see that the tested models give a overall high accur
 
 Model | Embeddings | Accuracy
 ------------ | ------------- | ------------- 
-**CNN** | Word embedding | **0.93**
+**CNN** | **Word embedding** | **0.93**
 Distilbert| Distilbert tokenizer | 0.93
 MLP| Word embedding  | 0.93
 SVM | Doc2vec (DBOW)| 0.93
