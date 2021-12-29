@@ -27,7 +27,7 @@ def stemmer(stem_text):
 
 
 # Load dataset
-url = 'C:\Python Scripts\API_products\products_description.csv'
+url = 'C:\\Python Scripts\\API_products\\products_description.csv'
 dataset = pd.read_csv(url, header=0, index_col=0)
 
 # shape
@@ -40,4 +40,5 @@ dataset['description'] = dataset['description'].apply(remove_stopwords)
 dataset['description'] = dataset['description'].apply(stemmer)
 print(dataset[:5])
 
-data = dataset.to_csv('C:\\Python Scripts\\API_products\\products_clean.csv', encoding='utf-8')
+data = dataset.to_csv('C:\\Python Scripts\\API_products\\products_clean.csv',
+                      encoding='utf-8')
