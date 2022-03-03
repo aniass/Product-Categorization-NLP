@@ -28,12 +28,14 @@ def preprocess(text):
 
 
 # Load dataset
-url = 'C:\\Python Scripts\\API_products\\products_clean.csv'
+url = 'data\\products_description.csv'
 df = pd.read_csv(url, header=0, index_col=0)
 
 # Shape
 print(df.shape)
 print(df.head())
+
+df['description'] = df['description'].apply(preprocess)
 
 # Separate into input and output columns
 X = df['description']
@@ -55,7 +57,7 @@ classifiers = [
 
 for classifier in classifiers:
     pipeline = Pipeline(steps=[('vect', CountVectorizer(
-           tokenizer=preprocess, min_df=5, ngram_range=(1, 2))),
+            min_df=5, ngram_range=(1, 2))),
                               ('tfidf', TfidfTransformer()),
                               ('classifier', classifier)])
     pipeline.fit(X_train, y_train)
