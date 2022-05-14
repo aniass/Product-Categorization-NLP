@@ -5,7 +5,8 @@
 
 The goal of the project is product categorization based on their description with Machine Learning and Deep Learning (MLP, CNN, Distilbert) algorithms. Additionaly we have created Doc2vec and Word2vec models, Topic Modeling (with LDA analysis) and EDA analysis (data exploration, data aggregation and cleaning data).
 
-The dataset comes from http://makeup-api.herokuapp.com/ and has been obtained from my previous project at [Extracting Data using API](https://github.com/aniass/Extracting-data-using-API).
+### Dataset
+The dataset comes from http://makeup-api.herokuapp.com/ and has been obtained by an API. It can be seen at my previous project at [Extracting Data using API](https://github.com/aniass/Extracting-data-using-API).
 
 ### Motivation
 
