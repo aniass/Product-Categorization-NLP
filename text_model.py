@@ -11,14 +11,15 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import LinearSVC
 from sklearn.ensemble import GradientBoostingClassifier
-import pickle
 
+
+URL_DATA = 'C:\\Python Scripts\\Products_categorization\data\\products_description.csv'
 
 stop = stopwords.words('english')
 porter = PorterStemmer()
 
 
-def preprocess(text):
+def preprocess_data(text):
     ''' The function to remove punctuation,
     stopwords and apply stemming'''
     words = re.sub("[^a-zA-Z]", " ", text)
@@ -27,50 +28,50 @@ def preprocess(text):
     return " ".join(words)
 
 
-# Load dataset
-url = 'data\\products_description.csv'
-df = pd.read_csv(url, header=0, index_col=0)
+def read_data(path):
+    data = pd.read_csv(path, header=0, index_col=0)
+    data['description'] = data['description'].apply(preprocess_data)
+    X = data['description']
+    y = data['product_type']
+    return X, y
 
-# Shape
-print(df.shape)
-print(df.head())
 
-df['description'] = df['description'].apply(preprocess)
+def prepare_data(X, y):
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
+    return X_train, X_test, y_train, y_test
 
-# Separate into input and output columns
-X = df['description']
-y = df['product_type']
 
-# Split the dataset into train and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25,
-                                                    random_state=42)
+def get_models(X_train, X_test, y_train, y_test):
+    models = pd.DataFrame()
+    classifiers = [
+        LogisticRegression(),
+        LinearSVC(),
+        MultinomialNB(),
+        RandomForestClassifier(n_estimators=50),
+        GradientBoostingClassifier(n_estimators=50), ]
 
-models = pd.DataFrame()
+    for classifier in classifiers:
+        pipeline = Pipeline(steps=[('vect', CountVectorizer(
+                            min_df=5, ngram_range=(1, 2))),
+                                   ('tfidf', TfidfTransformer()),
+                                   ('classifier', classifier)])
+        pipeline.fit(X_train, y_train)
+        score = pipeline.score(X_test, y_test)
+        param_dict = {
+                      'Model': classifier.__class__.__name__,
+                      'Score': score
+                     }
+        models = models.append(pd.DataFrame(param_dict, index=[0]))
 
-classifiers = [
-    LogisticRegression(),
-    LinearSVC(),
-    MultinomialNB(),
-    RandomForestClassifier(n_estimators=50),
-    GradientBoostingClassifier(n_estimators=50),
-    ]
+    models.reset_index(drop=True, inplace=True)
+    print(models.sort_values(by='Score', ascending=False))
 
-for classifier in classifiers:
-    pipeline = Pipeline(steps=[('vect', CountVectorizer(
-            min_df=5, ngram_range=(1, 2))),
-                              ('tfidf', TfidfTransformer()),
-                              ('classifier', classifier)])
-    pipeline.fit(X_train, y_train)
-    score = pipeline.score(X_test, y_test)
-    param_dict = {
-                  'Model': classifier.__class__.__name__,
-                  'Score': score
-                  }
-    models = models.append(pd.DataFrame(param_dict, index=[0]))
 
-models.reset_index(drop=True, inplace=True)
-print(models.sort_values(by='Score', ascending=False))
+def main():
+    X, y = read_data(URL_DATA)
+    X_train, X_test, y_train, y_test = prepare_data(X, y)
+    get_models(X_train, X_test, y_train, y_test)
 
-# Save the model
-with open('model.pkl', 'wb') as model_file:
-    pickle.dump(pipeline, model_file)
+
+if __name__ == '__main__':
+    main()
