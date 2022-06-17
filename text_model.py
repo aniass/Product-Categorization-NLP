@@ -1,4 +1,3 @@
-# Load libraries
 import pandas as pd
 import re
 from nltk.corpus import stopwords
@@ -13,7 +12,7 @@ from sklearn.svm import LinearSVC
 from sklearn.ensemble import GradientBoostingClassifier
 
 
-URL_DATA = 'C:\\Python Scripts\\Products_categorization\data\\products_description.csv'
+URL_DATA = 'data\\products_description.csv'
 
 stop = stopwords.words('english')
 porter = PorterStemmer()
@@ -29,6 +28,7 @@ def preprocess_data(text):
 
 
 def read_data(path):
+    ''' Function to read text data'''
     data = pd.read_csv(path, header=0, index_col=0)
     data['description'] = data['description'].apply(preprocess_data)
     X = data['description']
@@ -37,11 +37,14 @@ def read_data(path):
 
 
 def prepare_data(X, y):
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
+    ''' Function to split data on train and test set '''
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25,
+                                                        random_state=42)
     return X_train, X_test, y_train, y_test
 
 
 def get_models(X_train, X_test, y_train, y_test):
+    ''' Calculating models with score '''
     models = pd.DataFrame()
     classifiers = [
         LogisticRegression(),
