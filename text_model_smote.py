@@ -16,7 +16,8 @@ from sklearn.svm import LinearSVC
 import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 
-URL_DATA = 'C:\\Python Scripts\\Products_categorization\data\\products_description.csv'
+
+URL_DATA = 'data\\products_description.csv'
 
 stop = stopwords.words('english')
 porter = PorterStemmer()
@@ -32,6 +33,7 @@ def preprocess_data(text):
 
 
 def read_data(path):
+    ''' Function to read text data'''
     data = pd.read_csv(path, header=0, index_col=0)
     data['description'] = data['description'].apply(preprocess_data)
     X = data['description']
@@ -40,11 +42,14 @@ def read_data(path):
 
 
 def prepare_data(X, y):
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
+    '''Function to split data on train and test set'''
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25,
+                                                        random_state=42)
     return X_train, X_test, y_train, y_test
 
 
 def get_models(X_train, X_test, y_train, y_test):
+    '''Calculating models with score'''
     models = pd.DataFrame()
     classifiers = [
         LogisticRegression(),
@@ -71,11 +76,7 @@ def get_models(X_train, X_test, y_train, y_test):
     print(models.sort_values(by='Score', ascending=False))
 
 
-def main():
+if __name__ == '__main__':
     X, y = read_data(URL_DATA)
     X_train, X_test, y_train, y_test = prepare_data(X, y)
     get_models(X_train, X_test, y_train, y_test)
-
-
-if __name__ == '__main__':
-    main()
