@@ -20,7 +20,7 @@ The aim of the project is multi-class text classification to make-up products ba
 * Word2vec model - ***Word2vec.ipynb***
 * LDA - Topic modeling - ***LDA_Topic_modeling.ipynb***
 * EDA analysis - ***Products_analysis.ipynb***
-* Python scripts to clean data and ML model - **clean_data.py, text_model.py**
+* Python scripts to clean data and train ML models - **clean_data.py, text_model.py, text_model_smote.py**
 * data, models - data and models used in the project.
 
 ### Summary
