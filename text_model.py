@@ -68,13 +68,10 @@ def get_models(X_train, X_test, y_train, y_test):
 
     models.reset_index(drop=True, inplace=True)
     print(models.sort_values(by='Score', ascending=False))
+    
 
-
-def main():
+if __name__ == '__main__':
     X, y = read_data(URL_DATA)
     X_train, X_test, y_train, y_test = prepare_data(X, y)
     get_models(X_train, X_test, y_train, y_test)
 
-
-if __name__ == '__main__':
-    main()
