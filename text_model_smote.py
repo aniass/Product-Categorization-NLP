@@ -23,6 +23,14 @@ stop = stopwords.words('english')
 porter = PorterStemmer()
 
 
+def grouping_data(df):
+    """Grouping data to a smaller number of categories"""
+    df.loc[df['product_type'].isin(['lipstick','lip_liner']),'product_type'] = 'lipstick'
+    df.loc[df['product_type'].isin(['blush','bronzer']),'product_type'] = 'contour'
+    df.loc[df['product_type'].isin(['eyeliner','eyeshadow','mascara','eyebrow']),'product_type'] = 'eye_makeup'
+    return df
+
+
 def preprocess_data(text):
     ''' The function to remove punctuation,
     stopwords and apply stemming'''
@@ -34,7 +42,8 @@ def preprocess_data(text):
 
 def read_data(path):
     ''' Function to read text data'''
-    data = pd.read_csv(path, header=0, index_col=0)
+    df = pd.read_csv(path, header=0, index_col=0)
+    data = grouping_data(df)
     data['description'] = data['description'].apply(preprocess_data)
     X = data['description']
     y = data['product_type']
