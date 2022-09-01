@@ -54,4 +54,11 @@ Logistic Regression | Doc2vec (DM)  | 0.89
 
 #### Running the project:
 
-* To run this project use Jupyter Notebook or Google Colab.
+To run this project use Jupyter Notebook or Google Colab.
+
+You can run the scripts in the terminal:
+
+    clean_data.py
+    text_model.py
+    text_model_smote.py
+
