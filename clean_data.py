@@ -10,6 +10,13 @@ porter = PorterStemmer()
 URL_DATA = '\data\products_description.csv'
 
 
+def clean_data(df):
+    df.loc[df['product_type'].isin(['lipstick','lip_liner']),'product_type'] = 'lipstick'
+    df.loc[df['product_type'].isin(['blush','bronzer']),'product_type'] = 'contour'
+    df.loc[df['product_type'].isin(['eyeliner','eyeshadow','mascara','eyebrow']),'product_type'] = 'eye_makeup'
+    return df
+
+
 def remove_punctuation(description):
     """Function to remove punctuation"""
     table = str.maketrans('', '', string.punctuation)
@@ -30,7 +37,8 @@ def stemmer(stem_text):
 
 def read_data(path):
     """Function to read and clean text data"""
-    data = pd.read_csv(path, header=0, index_col=0)
+    df = pd.read_csv(path, header=0, index_col=0)
+    data = clean_data(df)
     data['description'] = data['description'].astype(str)
     data['description'] = data['description'].apply(remove_punctuation)
     data['description'] = data['description'].apply(remove_stopwords)
