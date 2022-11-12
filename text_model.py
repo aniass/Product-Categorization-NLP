@@ -48,7 +48,7 @@ def read_data(path):
 def prepare_data(X, y):
     ''' Function to split data on train and test set '''
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25,
-                                                        random_state=42)
+                                                        random_state=42, stratify=y)
     return X_train, X_test, y_train, y_test
 
 
@@ -83,4 +83,3 @@ if __name__ == '__main__':
     X, y = read_data(URL_DATA)
     X_train, X_test, y_train, y_test = prepare_data(X, y)
     get_models(X_train, X_test, y_train, y_test)
-
