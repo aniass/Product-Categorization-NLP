@@ -35,16 +35,16 @@ From our experiments we can see that the tested models give a overall high accur
 
 Model | Embeddings | Accuracy
 ------------ | ------------- | ------------- 
-SVM| BOW +TF-IDF  | 0.96
+SVC| BOW +TF-IDF  | 0.96
 MLP| Word embedding  | 0.93
 CNN | Word embedding | 0.93
-Logistic Regression | BOW +TF-IDF  | 0.93
 Distilbert| Distilbert tokenizer | 0.93
-Gradient Boosting | BOW +TF-IDF | 0.92
+Gradient Boosting | BOW +TF-IDF | 0.93
 Random Forest| BOW +TF-IDF | 0.92
 SVM | Doc2vec (DBOW)| 0.92
-Naive Bayes | BOW +TF-IDF | 0.90
+Logistic Regression | BOW +TF-IDF  | 0.91
 Logistic Regression | Doc2vec (DM)  | 0.90
+Naive Bayes | BOW +TF-IDF | 0.88
 
 
 ### Technologies
