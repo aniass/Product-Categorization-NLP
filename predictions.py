@@ -10,6 +10,7 @@ porter = PorterStemmer()
 
 
 def load_model():
+    '''Loading pretrained model'''
     with open(MODELSPATH, 'rb') as file:
         model = load(file)
         return model
@@ -23,8 +24,10 @@ def preprocess_data(text):
 
 
 def get_prediction(input_text):
+    ''' Generating predictions from raw data'''
     model = load_model()
-    text =  preprocess_data(input_text)
+    data = [input_text]
+    text =  preprocess_data(data)
     prediction = model.predict(text)
     result = ''.join(prediction)
     print('---------------')
@@ -33,6 +36,5 @@ def get_prediction(input_text):
 
 if __name__ == '__main__':
     text = input("Type a your product description:\n")
-    data = [text]
-    get_prediction(data)
+    get_prediction(text)
     
