@@ -24,7 +24,8 @@ The aim of the project is multi-class text classification to make-up products ba
 * EDA analysis - ***Products_analysis.ipynb***
 * Python script to train ML models - **text_model.py**
 * Python script to train ML models with smote method - **text_model_smote.py**
-* Python scripts to text clean data - **clean_data.py**
+* Python script to text clean data - **clean_data.py**
+* Python script to generate predictions from trained model - **predictions.py**
 * data, models - data and models used in the project.
 
 ### Summary
