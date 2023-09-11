@@ -40,13 +40,13 @@ def read_data(path):
     df = pd.read_csv(path, header=0, index_col=0)
     data = grouping_data(df)
     data['description'] = data['description'].apply(preprocess_data)
+    return data
+
+
+def splitting_data(data):
+    ''' Function to split data on train and test set '''
     X = data['description']
     y = data['product_type']
-    return X, y
-
-
-def prepare_data(X, y):
-    ''' Function to split data on train and test set '''
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25,
                                                         random_state=42, stratify=y)
     return X_train, X_test, y_train, y_test
@@ -80,6 +80,6 @@ def get_models(X_train, X_test, y_train, y_test):
     
 
 if __name__ == '__main__':
-    X, y = read_data(URL_DATA)
-    X_train, X_test, y_train, y_test = prepare_data(X, y)
+    df = read_data(URL_DATA)
+    X_train, X_test, y_train, y_test = splitting_data(df)
     get_models(X_train, X_test, y_train, y_test)
