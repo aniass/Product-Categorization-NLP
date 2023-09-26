@@ -49,9 +49,9 @@ def read_data(path):
 
 
 def splitting_data(data):
+    '''Function to split data on train and test set'''
     X = data['description']
     y = data['product_type']
-    '''Function to split data on train and test set'''
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25,
                                                         random_state=42)
     return X_train, X_test, y_train, y_test
