@@ -14,11 +14,8 @@ from sklearn.ensemble import GradientBoostingClassifier
 
 URL_DATA = 'data\\products_description.csv'
 
-stop = stopwords.words('english')
-porter = PorterStemmer()
 
-
-def grouping_data(df):
+def grouping_data(df: pd.DataFrame) -> pd.DataFrame:
     """Grouping data to a smaller number of categories"""
     df.loc[df['product_type'].isin(['lipstick','lip_liner']),'product_type'] = 'lipstick'
     df.loc[df['product_type'].isin(['blush','bronzer']),'product_type'] = 'contour'
@@ -26,16 +23,18 @@ def grouping_data(df):
     return df
 
 
-def preprocess_data(text):
+def preprocess_data(text: str) -> str:
     ''' The function to remove punctuation,
     stopwords and apply stemming'''
+    stop = stopwords.words('english')
+    porter = PorterStemmer()
     words = re.sub("[^a-zA-Z]", " ", text)
     words = [word.lower() for word in text.split() if word.lower() not in stop]
     words = [porter.stem(word) for word in words]
     return " ".join(words)
 
 
-def read_data(path):
+def read_data(path: str) -> pd.DataFrame:
     ''' Function to read text data'''
     df = pd.read_csv(path, header=0, index_col=0)
     data = grouping_data(df)
@@ -43,7 +42,7 @@ def read_data(path):
     return data
 
 
-def splitting_data(data):
+def splitting_data(data: pd.DataFrame):
     ''' Function to split data on train and test set '''
     X = data['description']
     y = data['product_type']
@@ -52,8 +51,7 @@ def splitting_data(data):
     return X_train, X_test, y_train, y_test
 
 
-def get_models(X_train, X_test, y_train, y_test):
-    ''' Calculating models with score '''
+def get_models(X_train, X_test, y_train, y_test)-> pd.DataFrame:
     models = pd.DataFrame()
     classifiers = [
         LogisticRegression(),
@@ -63,21 +61,27 @@ def get_models(X_train, X_test, y_train, y_test):
         GradientBoostingClassifier(n_estimators=50), ]
 
     for classifier in classifiers:
-        pipeline = Pipeline(steps=[('vect', CountVectorizer(
-                            min_df=5, ngram_range=(1, 2))),
-                                   ('tfidf', TfidfTransformer()),
-                                   ('classifier', classifier)])
-        pipeline.fit(X_train, y_train)
-        score = pipeline.score(X_test, y_test)
-        param_dict = {
+        try:
+            pipeline = Pipeline(steps=[
+                    ('vect', CountVectorizer(min_df=5, ngram_range=(1, 2))),
+                    ('tfidf', TfidfTransformer()),
+                    ('classifier', classifier)
+            ])
+            pipeline.fit(X_train, y_train)
+            score = pipeline.score(X_test, y_test)
+            param_dict = {
                       'Model': classifier.__class__.__name__,
                       'Score': score
-                     }
-        models = models.append(pd.DataFrame(param_dict, index=[0]))
+            }
+            models = models.append(pd.DataFrame(param_dict, index=[0]))
+        except Exception as e:
+            print(f"Error occurred while fitting {classifier.__class__.__name__}: {str(e)}")
 
     models.reset_index(drop=True, inplace=True)
-    print(models.sort_values(by='Score', ascending=False))
-    
+    models_sorted = models.sort_values(by='Score', ascending=False)
+    print(models_sorted)
+    return models_sorted
+
 
 if __name__ == '__main__':
     df = read_data(URL_DATA)
