@@ -6,6 +6,7 @@ from nltk.stem import PorterStemmer
 
 
 URL_DATA = r'\data\products_description.csv'
+CLEANED_DATA_PATH = r'data\products_clean.csv'
 
 
 def grouping_data(df: pd.DataFrame) -> pd.DataFrame:
@@ -62,4 +63,4 @@ if __name__ == '__main__':
     if not data_clean.empty:
         print(data_clean.shape)
         print(data_clean.head(5))
-        data_clean.to_csv('data\products_clean.csv',encoding='utf-8')
+        data_clean.to_csv(CLEANED_DATA_PATH, encoding='utf-8')
