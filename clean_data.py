@@ -47,8 +47,8 @@ def preprocess_data(text_data: str) -> str:
     return data
 
 
-def read_data(path):
-    """Function to read and clean text data"""
+def read_data(path: str) -> pd.DataFrame:
+    """Function to read data"""
     try:
         df = pd.read_csv(path, header=0, index_col=0)
         return df
