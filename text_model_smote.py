@@ -17,9 +17,9 @@ import warnings
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 
 
-URL_DATA = 'data\\products_description.csv'
+URL_DATA = 'data\products_description.csv'
 
-stop = stopwords.words('english')
+stop_words = set(stopwords.words('english'))
 porter = PorterStemmer()
 
 
@@ -31,25 +31,25 @@ def grouping_data(df):
     return df
 
 
-def preprocess_data(text):
-    ''' The function to remove punctuation,
-    stopwords and apply stemming'''
+def preprocess_data(text: str) -> str:
+    '''Remove punctuation, stopwords and apply stemming'''
+    # remove punctuation
     words = re.sub("[^a-zA-Z]", " ", text)
-    words = [word.lower() for word in text.split() if word.lower() not in stop]
-    words = [porter.stem(word) for word in words]
+    # Remove stopwords and apply stemming
+    words = [porter.stem(word.lower()) for word in words.split() if word.lower() not in stop_words]
     return " ".join(words)
 
 
 def read_data(path):
     ''' Function to read text data'''
     df = pd.read_csv(path, header=0, index_col=0)
+    return df
+
+
+def splitting_data(df):
+    '''Function to split data on train and test set'''
     data = grouping_data(df)
     data['description'] = data['description'].apply(preprocess_data)
-    return data
-
-
-def splitting_data(data):
-    '''Function to split data on train and test set'''
     X = data['description']
     y = data['product_type']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25,
