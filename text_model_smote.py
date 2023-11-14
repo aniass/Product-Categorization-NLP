@@ -23,6 +23,16 @@ stop_words = set(stopwords.words('english'))
 porter = PorterStemmer()
 
 
+def read_data(path: str) -> pd.DataFrame:
+    """Function to read data"""
+    try:
+        df = pd.read_csv(path, header=0, index_col=0)
+        return df
+    except Exception as e:
+        print(f"Error loading data: {str(e)}")
+        return pd.DataFrame()
+
+
 def grouping_data(df):
     """Grouping data to a smaller number of categories"""
     df.loc[df['product_type'].isin(['lipstick','lip_liner']),'product_type'] = 'lipstick'
@@ -40,13 +50,7 @@ def preprocess_data(text: str) -> str:
     return " ".join(words)
 
 
-def read_data(path):
-    ''' Function to read text data'''
-    df = pd.read_csv(path, header=0, index_col=0)
-    return df
-
-
-def splitting_data(df):
+def preparing_data(df):
     '''Function to split data on train and test set'''
     data = grouping_data(df)
     data['description'] = data['description'].apply(preprocess_data)
@@ -68,24 +72,30 @@ def get_models(X_train, X_test, y_train, y_test):
         GradientBoostingClassifier(n_estimators=50), ]
 
     for classifier in classifiers:
-        pipeline = imbpipeline(steps=[('vect', CountVectorizer(
-                               min_df=5, ngram_range=(1, 2))),
-                                      ('tfidf', TfidfTransformer()),
-                                      ('smote', SMOTE()),
-                                      ('classifier', classifier)])
-        pipeline.fit(X_train, y_train)
-        score = pipeline.score(X_test, y_test)
-        param_dict = {
+        try:
+            pipeline = imbpipeline(steps=[
+                    ('vect', CountVectorizer(min_df=5, ngram_range=(1, 2))),
+                    ('tfidf', TfidfTransformer()),
+                    ('smote', SMOTE()),
+                    ('classifier', classifier)
+            ])
+            pipeline.fit(X_train, y_train)
+            score = pipeline.score(X_test, y_test)
+            param_dict = {
                       'Model': classifier.__class__.__name__,
                       'Score': score
-                     }
-        models = models.append(pd.DataFrame(param_dict, index=[0]))
+            }
+            models = models.append(pd.DataFrame(param_dict, index=[0]))
+        except Exception as e:
+            print(f"Error occurred while fitting {classifier.__class__.__name__}: {str(e)}")
 
     models.reset_index(drop=True, inplace=True)
-    print(models.sort_values(by='Score', ascending=False))
+    models_sorted = models.sort_values(by='Score', ascending=False)
+    print(models_sorted)
+    return models_sorted
 
 
 if __name__ == '__main__':
     df = read_data(URL_DATA)
-    X_train, X_test, y_train, y_test = splitting_data(df)
+    X_train, X_test, y_train, y_test = preparing_data(df)
     get_models(X_train, X_test, y_train, y_test)
