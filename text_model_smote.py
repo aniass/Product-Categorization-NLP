@@ -33,7 +33,7 @@ def read_data(path: str) -> pd.DataFrame:
         return pd.DataFrame()
 
 
-def grouping_data(df):
+def grouping_data(df: pd.DataFrame) -> pd.DataFrame:
     """Grouping data to a smaller number of categories"""
     df.loc[df['product_type'].isin(['lipstick','lip_liner']),'product_type'] = 'lipstick'
     df.loc[df['product_type'].isin(['blush','bronzer']),'product_type'] = 'contour'
@@ -50,7 +50,7 @@ def preprocess_data(text: str) -> str:
     return " ".join(words)
 
 
-def preparing_data(df):
+def preparing_data(data: pd.DataFrame):
     '''Function to split data on train and test set'''
     data = grouping_data(df)
     data['description'] = data['description'].apply(preprocess_data)
@@ -61,7 +61,7 @@ def preparing_data(df):
     return X_train, X_test, y_train, y_test
 
 
-def get_models(X_train, X_test, y_train, y_test):
+def get_models(X_train, X_test, y_train, y_test) -> pd.DataFrame:
     '''Calculating models with score'''
     models = pd.DataFrame()
     classifiers = [
