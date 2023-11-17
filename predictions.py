@@ -7,10 +7,14 @@ MODELS_PATH = '\models\SVC_model2.pkl'
 
 
 def load_model():
-    '''Loading pretrained model'''
-    with open(MODELS_PATH, 'rb') as file:
-        model = load(file)
+    '''Load pretrained model'''
+    try:
+        with open(MODELS_PATH, 'rb') as file:
+            model = load(file)
         return model
+    except FileNotFoundError:
+        print(f"Error: The model file '{MODELS_PATH}' was not found.")
+        return None
 
 
 def preprocess_data(text):
@@ -28,7 +32,6 @@ def get_prediction(input_text):
     processed_text =  preprocess_data(data)
     prediction = model.predict(processed_text)
     result = ''.join(prediction)
-    print('---------------')
     print(f'Your product is in category: {result}')
 
 
