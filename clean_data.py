@@ -38,7 +38,7 @@ def stemmer(stem_text: str) -> str:
 
 
 def preprocess_data(text_data: str) -> str:
-    ''' Function to preprocess data'''
+    """Function to preprocess data"""
     data = grouping_data(text_data)
     data['description'] = data['description'].astype(str)
     data['description'] = data['description'].apply(remove_punctuation)
