@@ -18,7 +18,7 @@ def load_model():
 
 
 def preprocess_data(text):
-    ''' Applying stopwords and stemming on raw data'''
+    '''Applying stopwords and stemming on raw data'''
     stop_words = set(stopwords.words('english'))
     porter = PorterStemmer()
     words = [porter.stem(word.lower()) for word in text if word.lower() not in stop_words]
@@ -26,7 +26,7 @@ def preprocess_data(text):
 
 
 def get_prediction(input_text):
-    ''' Generating predictions from raw data'''
+    '''Generating predictions from raw data'''
     model = load_model()
     data = [input_text]
     processed_text =  preprocess_data(data)
