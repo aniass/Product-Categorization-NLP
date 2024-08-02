@@ -24,8 +24,7 @@ def grouping_data(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def preprocess_data(text: str) -> str:
-    ''' The function to remove punctuation,
-    stopwords and apply stemming'''
+    """The function to remove punctuation, stopwords and apply stemming"""
     stop = stopwords.words('english')
     porter = PorterStemmer()
     words = re.sub("[^a-zA-Z]", " ", text)
@@ -35,7 +34,7 @@ def preprocess_data(text: str) -> str:
 
 
 def read_data(path: str) -> pd.DataFrame:
-    ''' Function to read text data'''
+    """Function to read text data"""
     df = pd.read_csv(path, header=0, index_col=0)
     data = grouping_data(df)
     data['description'] = data['description'].apply(preprocess_data)
@@ -43,7 +42,7 @@ def read_data(path: str) -> pd.DataFrame:
 
 
 def splitting_data(data: pd.DataFrame):
-    ''' Function to split data on train and test set '''
+    """Function to split data on train and test set"""
     X = data['description']
     y = data['product_type']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25,
@@ -52,6 +51,7 @@ def splitting_data(data: pd.DataFrame):
 
 
 def get_models(X_train, X_test, y_train, y_test)-> pd.DataFrame:
+    """Calculating models with score"""
     models = pd.DataFrame()
     classifiers = [
         LogisticRegression(),
