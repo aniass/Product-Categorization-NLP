@@ -1,5 +1,4 @@
-'''Product categorization: the second approach to text
-   classification with SMOTE method '''
+'''Product categorization: the second approach to text classification with SMOTE method'''
 
 import pandas as pd
 import re
@@ -18,7 +17,6 @@ warnings.filterwarnings("ignore", category=RuntimeWarning)
 
 
 URL_DATA = 'data\products_description.csv'
-
 stop_words = set(stopwords.words('english'))
 porter = PorterStemmer()
 
@@ -42,7 +40,7 @@ def grouping_data(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def preprocess_data(text: str) -> str:
-    '''Remove punctuation, stopwords and apply stemming'''
+    """Remove punctuation, stopwords and apply stemming"""
     # remove punctuation
     words = re.sub("[^a-zA-Z]", " ", text)
     # Remove stopwords and apply stemming
@@ -51,7 +49,7 @@ def preprocess_data(text: str) -> str:
 
 
 def preparing_data(data: pd.DataFrame):
-    '''Function to split data on train and test set'''
+    """Function to split data on train and test set"""
     data = grouping_data(df)
     data['description'] = data['description'].apply(preprocess_data)
     X = data['description']
@@ -62,7 +60,7 @@ def preparing_data(data: pd.DataFrame):
 
 
 def get_models(X_train, X_test, y_train, y_test) -> pd.DataFrame:
-    '''Calculating models with score'''
+    """Calculating models with score"""
     models = pd.DataFrame()
     classifiers = [
         LogisticRegression(),
