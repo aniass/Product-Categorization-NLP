@@ -8,7 +8,7 @@ The goal of the project is product categorization based on their description wit
 ### Dataset
 The dataset comes from http://makeup-api.herokuapp.com/ and has been obtained by an API. It can be seen at my previous project at [Extracting Data using API](https://github.com/aniass/Extracting-data-using-API).
 
-The dataset contains the real descriptions about makeup products where each description has been labeled with a specific product.
+The dataset contains the real data about makeup products such as brand, category, name and descriptions about makeup products where each description has been labeled with a specific product.
 
 ### Motivation
 
