@@ -15,13 +15,13 @@ The dataset contains the real data about makeup products such as brand, category
 The aim of the project is multi-class text classification to make-up products based on their description. Based on given text as an input, one have predicted what would be the category. There are five types of categories corresponding to different makeup products. In analysis I used a different methods for a text representation (such as BoW +TF-IDF, doc2vec, Distilbert embeddings), feature extraction (Word2vec, Doc2vec) and various Machine Learning/Deep Lerning algorithms to get more accurate predictions and choose the most accurate one for our issue.  
 
 ### Project contains:
-* Multi-class text classification with ML algorithms- ***Text_analysis.ipynb***
-* Text classification with Distilbert model - ***Bert_products.ipynb***
-* Text classification with MLP and Convolutional Neural Netwok (CNN) models - ***Text_nn.ipynb***
-* Text classification with Doc2vec model -***Doc2vec.ipynb***
-* Word2vec model - ***Word2vec.ipynb***
-* LDA - Topic modeling - ***LDA_Topic_modeling.ipynb***
-* EDA analysis - ***Products_analysis.ipynb***
+* **Part 1: Data Analysis** - Products_analysis.ipynb
+* **Part 2: Topic modeling by LDA method** - LDA_Topic_modeling.ipynb 
+* **Part 3: Multi-class text classification with ML algorithms** - Text_analysis.ipynb
+* **Part 4: Text classification with Distilbert model** - Bert_products.ipynb
+* **Part 5: Text classification with MLP and Convolutional Neural Netwok (CNN) models** - Text_nn.ipynb
+* **Part 6: Text classification with Doc2vec model** - Doc2vec.ipynb
+* **Part 7: Word2vec model** - Word2vec.ipynb
 * Python script to train ML models - **text_model.py**
 * Python script to train ML models with smote method - **text_model_smote.py**
 * Python script to text clean data - **clean_data.py**
