@@ -20,8 +20,8 @@ The aim of the project is multi-class text classification to make-up products ba
 * **Part 3: Multi-class text classification with ML algorithms** - Text_analysis.ipynb
 * **Part 4: Text classification with Distilbert model** - Bert_products.ipynb
 * **Part 5: Text classification with MLP and Convolutional Neural Netwok (CNN) models** - Text_nn.ipynb
-* **Part 6: Text classification with Doc2vec model** - Doc2vec.ipynb
-* **Part 7: Word2vec model** - Word2vec.ipynb
+* **Part 6: Word2vec model** - Word2vec.ipynb
+* **Part 7: Text classification with Doc2vec model** - Doc2vec.ipynb
 * Python script to train ML models - **text_model.py**
 * Python script to train ML models with smote method - **text_model_smote.py**
 * Python script to text clean data - **clean_data.py**
