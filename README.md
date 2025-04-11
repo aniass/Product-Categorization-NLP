@@ -11,8 +11,7 @@ The dataset comes from http://makeup-api.herokuapp.com/ and has been obtained by
 The dataset contains the real data about makeup products such as brand, category, name and descriptions about makeup products where each description has been labeled with a specific product.
 
 ### Motivation
-
-The aim of the project is multi-class text classification to make-up products based on their description. Based on given text as an input, one have predicted what would be the category. There are five types of categories corresponding to different makeup products. In analysis I used a different methods for a text representation (such as BoW +TF-IDF, doc2vec, Distilbert embeddings), feature extraction (Word2vec, Doc2vec) and various Machine Learning/Deep Lerning algorithms to get more accurate predictions and choose the most accurate one for our issue.  
+The aim of the project is multi-class text classification to make-up products based on their description. Based on given text as an input, one have predicted what would be the category. There are five types of categories corresponding to different makeup products. In analysis I have used a different methods for a text representation (such as BoW +TF-IDF, doc2vec, Distilbert embeddings), feature extraction (Word2vec, Doc2vec) and various Machine Learning/Deep Lerning algorithms to get more accurate predictions and choose the most accurate one for our issue.
 
 ### Project contains:
 * **Part 1: Data Analysis** - Products_analysis.ipynb
@@ -30,9 +29,9 @@ The aim of the project is multi-class text classification to make-up products ba
 
 ### Summary
 
-To resolve problem of the product categorization based on their description I have applied multi-class text classification. I began with data analysis and data pre-processing from the dataset. Then I have used a combinations of text representation such as BoW +TF-IDF and doc2vec. I have experimented with several Machine Learning algorithms: Logistic Regression, Linear SVM, Multinomial Naive Bayes, Random Forest, Gradient Boosting and Neural Networks: MLP and Convolutional Neural Network (CNN) using different combinations of text representations and embeddings. Additionaly I have applied a transfer learning with  a pretrained Distilbert model from Huggingface Transformers library.
+To resolve problem of the product categorization based on their description I have applied multi-class text classification. I began with data analysis and data pre-processing from the dataset. Then I have used a combinations of text representation such as BoW +TF-IDF and doc2vec. I have experimented with several Machine Learning algorithms: Logistic Regression, Linear SVM, Multinomial Naive Bayes, Random Forest, Gradient Boosting and Neural Networks: MLP and Convolutional Neural Network (CNN) using different combinations of text representations and embeddings. Additionaly I have applied a transfer learning with a pretrained Distilbert model from Huggingface Transformers library.
 
-From the experiments one can see that the tested models give a overall high accuracy and similar results for the problem. The SVM (BOW +TF-IDF) model give the best accuracy of validation set equal to 96 %. Logistic regression performed very well both with BOW + TF-IDF and Doc2vec and achieved similar accuracy as MLP. CNN with word embeddings also has a very comparable result (93 %) to MLP. Transfer learning with Distilbert model also gave a similar results to previous models an we achieved an accuracy on the test set equal to 93 %. That shows the extensive models are not gave a better results to the problem than simple Machine Learning models such as SVM. 
+From the experiments one can see that the tested models give a overall high accuracy and similar results for the problem. The SVM (BOW +TF-IDF) model give the best accuracy of validation set equal to 96 %. Logistic regression performed very well both with BOW + TF-IDF and Doc2vec and achieved similar accuracy as MLP. CNN with word embeddings also has a very comparable result (93 %) to MLP. Transfer learning with Distilbert model also gave a similar results to previous models and its achieved an accuracy on the test set equal to 93 %. That shows the extensive models are not gave a better results to the problem than simple Machine Learning models such as SVM.
 
 Model | Embeddings | Accuracy
 ------------ | ------------- | ------------- 
@@ -47,15 +46,12 @@ Logistic Regression | BOW +TF-IDF  | 0.91
 Logistic Regression | Doc2vec (DM)  | 0.90
 Naive Bayes | BOW +TF-IDF | 0.88
 
-
 ### Technologies
 #### The project is created with:
-
 * Python 3.6/3.8
 * libraries: NLTK, gensim, Keras, TensorFlow, Hugging Face transformers, scikit-learn, pandas, numpy, seaborn, pyLDAvis.
 
 #### Running the project:
-
 To run this project use Jupyter Notebook or Google Colab.
 
 You can run the scripts in the terminal:
