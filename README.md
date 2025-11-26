@@ -3,7 +3,7 @@
  
 ### General info
 
-The goal of the project is product categorization based on their description with Machine Learning and Deep Learning (MLP, CNN, Distilbert) algorithms. Additionaly I have created Doc2vec and Word2vec models, Topic Modeling (with LDA analysis) and EDA analysis (data exploration, data aggregation and cleaning data).
+The goal of the project was product categorization based on their description with Machine Learning and Deep Learning (MLP, CNN, Distilbert) algorithms. The analysis includes data analysis, data preparation and prediction by different machine learning models such as Logistic Regression, Linear SVM, Multinomial Naive Bayes, Random Forest, Gradient Boosting and Neural Networks: MLP and Convolutional Neural Network (CNN). Additionaly I have created Doc2vec and Word2vec models, Topic Modeling (with LDA analysis).
 
 ### Dataset
 The dataset comes from http://makeup-api.herokuapp.com/ and has been obtained by an API. It can be seen at my previous project at [Extracting Data using API](https://github.com/aniass/Extracting-data-using-API).
@@ -11,7 +11,7 @@ The dataset comes from http://makeup-api.herokuapp.com/ and has been obtained by
 The dataset contains the real data about makeup products such as brand, category, name and descriptions about makeup products where each description has been labeled with a specific product.
 
 ### Motivation
-The aim of the project is multi-class text classification to make-up products based on their description. Based on given text as an input, one have predicted what would be the category. There are five types of categories corresponding to different makeup products. In analysis I have used a different methods for a text representation (such as BoW +TF-IDF, doc2vec, Distilbert embeddings), feature extraction (Word2vec, Doc2vec) and various Machine Learning/Deep Lerning algorithms to get more accurate predictions and choose the most accurate one for our issue.
+The aim of the project was multi-class text classification to make-up products based on their description. Based on given text as an input, one have predicted what would be the category. There are five types of categories corresponding to different makeup products. In analysis I have used a different methods for a text representation (such as BoW +TF-IDF, doc2vec, Distilbert embeddings), feature extraction (Word2vec, Doc2vec) and various Machine Learning/Deep Lerning algorithms to get more accurate predictions and choose the most accurate one for our issue.
 
 ### Project contains:
 * **Part 1: Data Analysis** - Products_analysis.ipynb
